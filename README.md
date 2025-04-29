@@ -84,4 +84,8 @@ Consider using a cloud storage service (e.g., AWS S3) for scalability.
     "filePath": "/images/1693441345412-myphoto.jpg"
     }
 ```
-
+### Package Information:
+    1. I use template engine in npm ejs. 
+        - source code : https://www.npmjs.com/package/ejs
+        ```npm install ejs```
+    2. This repo is created with using CommonJS. If you want to, you use ES6 module and import statement.
