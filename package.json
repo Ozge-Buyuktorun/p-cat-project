@@ -1,4 +1,4 @@
- {
+{
   "name": "p-cat-project",
   "version": "1.0.0",
   "description": "",
@@ -16,9 +16,14 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "devDependencies": {
+    "nodemon": "^3.1.10",
     "prettier": "3.5.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
