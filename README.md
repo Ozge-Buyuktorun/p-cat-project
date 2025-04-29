@@ -28,7 +28,15 @@ This project is a simple photo upload website built with **Node.js**, **TypeScri
         ├── 📄 package.json
         └── 📄 README.md
 
-Notes:
+## Partials Folder Structure
+        📁 views/
+        ├── 📁 partials/
+        │   ├── 📄 header.ejs
+        │   ├── 📄 footer.ejs
+        ├── 📄 index.ejs
+        ├── 📄 about.ejs
+
+### ! Notes:
 - for gitignore: https://www.toptal.com/developers/gitignore/
 
 
