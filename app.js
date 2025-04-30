@@ -42,8 +42,11 @@ app.use(express.urlencoded({ extended: true }));
 //Purpose: Parses incoming requests with JSON payloads, often used in APIs.
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async(req, res) => {
+  const photos = await Photo.find({});
+  res.render('index',{
+    photos
+  });
 });
 
 app.get("/about", (req, res) => {
