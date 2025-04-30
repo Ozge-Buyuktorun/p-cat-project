@@ -5,16 +5,30 @@ const ejs = require("ejs");
 const Photo = require("./models/Photo");
 const app = express();
 
-mongoose.connect("mongodb://localhost/pcat-test-db")
-  .then(() => console.log('Connected to pcat-test-db'))
-  .catch(err => console.error('Connection error', err));
+const dbName = 'pcat-test-db';
+const DB_URL = "mongodb://<username>:<password>"
+  + "@ac-4lhpcdy-shard-00-00.5nvubou.mongodb.net:27017"
+  + ",ac-4lhpcdy-shard-00-01.5nvubou.mongodb.net:27017"
+  + ",ac-4lhpcdy-shard-00-02.5nvubou.mongodb.net:27017"
+  + "/pcat-test-db"
+  + "?ssl=true"
+  + "&replicaSet=atlas-4axn1k-shard-0"
+  + "&authSource=admin"
+  + "&retryWrites=true&w=majority";
+
+  mongoose.connect(DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected successfully'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 //Template Engine
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 //MiddleWares
 //Purpose: Serves static files (like HTML, CSS, JS, images) from the "public" directory.
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 //Purpose: Parses incoming requests with URL-encoded payloads (from HTML form submissions).
 app.use(express.urlencoded({ extended: true }));
@@ -36,10 +50,11 @@ app.get("/add", (req, res) => {
 
 app.post("/photos", async (req, res) => {
   await Photo.create(req.body);
-  res.redirect("/");
+  res.redirect('/');
 });
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`app is running now. Click it -> localhost:${port}`);
+  console.log(`app is running now. and ${dbName} Database is active. 
+  You can go this link in browser now : localhost:${port}`);
 });
