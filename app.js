@@ -3,10 +3,16 @@ const mongoose = require("mongoose");
 const path = require("path");
 const ejs = require("ejs");
 const Photo = require("./models/Photo");
+require('dotenv').config();
+
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+
 const app = express();
 
+
 const dbName = 'pcat-test-db';
-const DB_URL = "mongodb://<username>:<password>"
+const DB_URL = `mongodb://${DB_USER}:${DB_PASS}`
   + "@ac-4lhpcdy-shard-00-00.5nvubou.mongodb.net:27017"
   + ",ac-4lhpcdy-shard-00-01.5nvubou.mongodb.net:27017"
   + ",ac-4lhpcdy-shard-00-02.5nvubou.mongodb.net:27017"
